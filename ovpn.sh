@@ -1,6 +1,6 @@
 #!/bin/bash
 
-configs=$( sudo ls /etc/openvpn/client )
+configs=$( sudo ls /etc/openvpn/client | grep .conf)
 counter=1
 
 #Ask the user which config to select
@@ -13,6 +13,12 @@ do
 		counter=$((counter+1))
 	fi
 done
+
+arr=($configs)
+
+read -p "Select an openvpn server to connect to: " selection
+echo
+echo ${arr[$selection]%.conf} selected, establishing connection with config file ${arr[$selection]}
 
 case $1 in
 	"france")
