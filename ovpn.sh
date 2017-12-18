@@ -18,11 +18,7 @@ arr=($configs)
 
 read -p "Select an openvpn server to connect to: " selection
 echo
-if [ "$selection" -gt "$((${#arr[@]} - 1))" ] 
-then
-	echo Selection out of range, exiting
-	exit
-elif [ "$selection" -lt 0 ]
+if [ "$selection" -gt "$((${#arr[@]} - 1))" ] || [ "$selection" -lt 0 ]
 then
 	echo Selection out of range, exiting
 	exit
